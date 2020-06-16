@@ -1,0 +1,159 @@
+.bg-putih {
+    background-color: #fff;
+}
+
+.text-biru {
+    color: #092d5b !important;
+}
+
+#mainNav .navbar-brand {
+    color: #092d5b;
+}
+
+#mainNav .navbar-nav li.nav-item a.nav-link {
+    color: #092d5b;
+}
+
+.masthead {
+    padding-top: 4rem;
+    padding-bottom: 0;
+}
+
+.kontak-container {
+    border-radius: 50%;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90px;
+    width: 90px;
+    margin: auto;
+}
+
+.kontak-img {
+    height: 87px;
+    width: 87px;
+}
+
+#mainNav.navbar-shrink {
+    background-color: white !important;
+    color: #092d5b;
+    border-bottom: 2px solid #fec013;
+}
+
+#mainNav.navbar-shrink .navbar-brand {
+    font-size: 1.5em;
+    color: #092d5b;
+}
+
+#mainNav.navbar-shrink .navbar-nav li.nav-item a.nav-link {
+    color: #092d5b;
+}
+
+#mainNav .navbar-nav>li.nav-item>a.nav-link.active:active, #mainNav .navbar-nav>li.nav-item>a.nav-link.active:focus, #mainNav .navbar-nav>li.nav-item>a.nav-link.active:hover {
+    color: #092d5b;
+}
+
+#mainNav .navbar-nav>li.nav-item>a.nav-link.active {
+    color: #092d5b;
+    background: #fec013;
+}
+
+#mainNav .navbar-nav>li.nav-item>a.nav-link.active:active, #mainNav .navbar-nav>li.nav-item>a.nav-link.active:focus, #mainNav .navbar-nav>li.nav-item>a.nav-link.active:hover {
+    color: #092d5b;
+    background: #fec013;
+}
+
+#mainNav .navbar-nav li.nav-item a.nav-link.active {
+    color: #092d5b;
+}
+
+#mainNav .navbar-nav li.nav-item a.nav-link:hover {
+    color: #fec013 !important;
+}
+
+.nav-link:hover, .nav-link:focus {
+    text-decoration: none;
+    color: #092d5b !important;
+}
+
+.logo-img {
+    height: 50px;
+    width: 50px;
+}
+
+.mp-img-p {
+    margin-left: 5px;
+    margin-right: 5px;
+    max-height: 125px !important;
+    width: auto;
+}
+
+.mp-img-l {
+    margin-left: 5px;
+    margin-right: 5px;
+    max-width: 200px !important;
+    height: auto;
+}
+
+.mp-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.page-section {
+    padding: 3rem 0;
+}
+
+#peraturanmore {
+    display: none;
+}
+#tentangmore {
+    display: none;
+}
+
+.btn-kuning {
+    color: #092d5b;
+    background-color: #fec013;
+    border-color: #fec013;
+}
+
+.card {
+    border-color: #092d5b;
+}
+.card-header {
+    background-color: #092d5b;
+    color: #fff;
+}
+.list-group-item {
+    border: 0.125rem solid  #092d5b;
+}
+.kebawah a {
+    text-decoration: none;
+    color: #092d5b;
+}
+
+.portfolio-modal .close {
+    font-size: 3rem;
+    line-height: 3rem;
+    color: #092d5b;
+}
+
+.btn-biru {
+    background-color: #092d5b;
+    color: #fff;
+    border-color: #092d5b;
+}
+
+@media only screen and (max-width: 600px) {
+    /* For tablets: */
+    .navbar-brand {
+        font-size: 1rem;
+    }
+    #mainNav.navbar-shrink .navbar-brand {
+        font-size: 1rem;
+        color: #092d5b;
+    }
+}
