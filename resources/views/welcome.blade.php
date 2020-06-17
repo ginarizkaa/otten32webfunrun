@@ -456,7 +456,7 @@
                                         <div class="form-group">
                                             <input type="text" name="name" class="form-control " id="nameInput" value="{{ old('name') }}" placeholder="Name" autofocus required>
                                             <div class="invalid-feedback " id="nameError">
-                                                <strong>Harus Diisi</strong>
+                                                <strong></strong>
                                             </div>
                                         </div>
                                         <div class="form-group">
