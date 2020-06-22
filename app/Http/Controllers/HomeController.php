@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Peserta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $exist = Peserta::where('id_user', Auth::user()->id)->count();
+        $dataPeserta = Peserta::where('id_user', Auth::user()->id)->get();
+
+        return view('home', ['exist' => $exist, 'dataPeserta' => $dataPeserta]);
     }
 }

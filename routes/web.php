@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PesertaController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,8 +17,10 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('guest');
 
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/peserta', 'PesertaController@postPeserta')->name('addPeserta');

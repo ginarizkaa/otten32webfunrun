@@ -75,7 +75,16 @@
              </div>
          </nav>
  
-          <!-- Bootstrap core JS-->
+          
+     
+         <div class="container">
+             <br>
+             <h3 class="text-center">@yield('judul_halaman')</h3>
+             @yield('konten')
+             <br>
+         </div>
+
+         <!-- Bootstrap core JS-->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
      <!-- Third party plugin JS-->
@@ -88,13 +97,6 @@
              once: false
         });
      </script>
-     
-         <div class="container">
-             <br>
-             <h3 class="text-center">@yield('judul_halaman')</h3>
-             @yield('konten')
-             <br>
-         </div>
     
  </body>
  </html>

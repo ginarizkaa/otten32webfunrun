@@ -17,20 +17,37 @@
                 </div>
             </div>
         </div> --}}
-    <form action="">
+    @if ($exist > 0)
+        {{-- <script>console.log({{ $dataPeserta }})</script> --}}
+        @foreach ($dataPeserta as $item)
+            {{ $item->no_identitas }} <br>
+            {{ $item->jenis_kelamin }} <br>
+
+        @endforeach
+        
+        {{-- @if ($dataPeserta->racepack_flag === 'N')
+        <p>blm bisa ambil racepack bung</p>
+            
+        @elseif($dataPeserta->paid_flag === 'N')
+            <p>blm bayar bung</p>
+            
+        @endif --}}
+        <p>udah daftar bung</p>
+    @else
+    <form action="{{ route('addPeserta') }}" method="POST">
         @csrf
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="form-group">
-                    <label for="noIdentitasInput">{{ __('Nomor Identitas') }}</label>
-                    <input type="text" class="form-control" id="noIdentitasInput" placeholder="32010034042918880" required>
+                    <label for="no_identitas">{{ __('Nomor Identitas') }}</label>
+                    <input type="text" class="form-control" name="no_identitas" id="no_identitas" placeholder="32010034042918880" required>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="jenisKelaminInput">{{ __('Jenis Kelamin') }}</label>
-                    <select class="custom-select" required>
+                    <label for="jenis_kelamin">{{ __('Jenis Kelamin') }}</label>
+                    <select class="custom-select" name="jenis_kelamin" id="jenis_kelamin" required>
                         <option value="">Pilih...</option>
                         <option value="L">Laki-Laki</option>
                         <option value="P">Perempuan</option>
@@ -38,8 +55,8 @@
                     <div class="invalid-feedback">Example invalid custom select feedback</div>
                 </div>
                 <div class="form-group">
-                    <label for="golDarahInput">{{ __('Golongan Darah') }}</label>
-                    <select class="custom-select" required>
+                    <label for="gol_darah">{{ __('Golongan Darah') }}</label>
+                    <select class="custom-select" name="gol_darah" id="gol_darah" required>
                         <option value="">Pilih...</option>
                         <option value="A">A</option>
                         <option value="B">B</option>
@@ -49,29 +66,29 @@
                     <div class="invalid-feedback">Example invalid custom select feedback</div>
                 </div>
                 <div class="form-group">
-                    <label for="alamatInput">{{ __('Alamat Lengkap') }}</label>
-                    <textarea class="form-control is-invalid" id="alamatInput" placeholder="Required example textarea" required></textarea>
+                    <label for="alamat_peserta">{{ __('Alamat Lengkap') }}</label>
+                    <textarea class="form-control is-invalid" name="alamat_peserta" id="alamat_peserta" placeholder="Required example textarea" required></textarea>
                     <div class="invalid-feedback">
                         Please enter a message in the textarea.
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="obatInput">{{ __('Obat Pribadi') }}</label>
-                    <textarea class="form-control is-invalid" id="obatInput" placeholder="Required example textarea" required></textarea>
+                    <label for="obat_pribadi">{{ __('Obat Pribadi') }}</label>
+                    <textarea class="form-control is-invalid" name="obat_pribadi" id="obat_pribadi" placeholder="Required example textarea" required></textarea>
                     <div class="invalid-feedback">
                         Please enter a message in the textarea.
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="riwayatInput">{{ __('Riwayat Kesehatan') }}</label>
-                    <textarea class="form-control is-invalid" id="riwayatInput" placeholder="Required example textarea" required></textarea>
+                    <label for="riwayat_kesehatan">{{ __('Riwayat Kesehatan') }}</label>
+                    <textarea class="form-control is-invalid" name="riwayat_kesehatan" id="riwayat_kesehatan" placeholder="Required example textarea" required></textarea>
                     <div class="invalid-feedback">
                         Please enter a message in the textarea.
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="riwayatKelInput">{{ __('Riwayat Kesehatan Keluarga') }}</label>
-                    <textarea class="form-control is-invalid" id="riwayatKelInput" placeholder="Required example textarea" required></textarea>
+                    <label for="riwayat_kesehatan_kel">{{ __('Riwayat Kesehatan Keluarga') }}</label>
+                    <textarea class="form-control is-invalid" name="riwayat_kesehatan_kel" id="riwayat_kesehatan_kel" placeholder="Required example textarea" required></textarea>
                     <div class="invalid-feedback">
                         Please enter a message in the textarea.
                     </div>
@@ -79,36 +96,22 @@
             </div>
             <div class="col-lg-6">
                 <div class="form-group">
-                    <label for="tempatLahirInput">{{ __('Tempat Lahir') }}</label>
-                    <input type="text" class="form-control" id="tempatLahirInput" placeholder="Jakarta" required>
+                    <label for="tempat_lahir">{{ __('Tempat Lahir') }}</label>
+                    <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" placeholder="Jakarta" required>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="tanggalLahirInput">{{ __('Tanggal Lahir') }}</label>
-                    <input type="date" class="form-control" id="tanggalLahirInput" placeholder="MM/DD/YYYY" required>
+                    <label for="tanggal_lahir">{{ __('Tanggal Lahir') }}</label>
+                    <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" placeholder="MM/DD/YYYY" required>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="pekerjaanInput">{{ __('Pekerjaan') }}</label>
-                    <input type="text" class="form-control" id="pekerjaanInput" placeholder="Pekerja Partai" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="institusiInput">{{ __('Institusi') }}</label>
-                    <input type="text" class="form-control" id="institusiInput" placeholder="PT. Nasdem" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="sizeChartInput">{{ __('Size Chart') }}</label>
-                    <select class="custom-select" required>
+                    <label for="size_chart">{{ __('Size Chart') }}</label>
+                    <select class="custom-select" name="size_chart" id="size_chart" required>
                         <option value="">Pilih...</option>
                         <option value="XS">XS</option>
                         <option value="S">S</option>
@@ -181,7 +184,14 @@
                     print_r($numbers);
                 @endphp
             </div> --}}
+            <div class="col-3">
+                <button type="submit" class="btn btn-biru btn-block rounded-pill">submit</button>
+            </div>
         </div>
+
+
     </form>
+    @endif
+    
 </div>
 @endsection
