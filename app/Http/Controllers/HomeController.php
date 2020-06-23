@@ -28,6 +28,7 @@ class HomeController extends Controller
         $exist = Peserta::where('id_user', Auth::user()->id)->count();
         $dataPeserta = Peserta::where('id_user', Auth::user()->id)->get();
 
+        // return json_encode($dataPeserta);
         return view('home', ['exist' => $exist, 'dataPeserta' => $dataPeserta]);
     }
 }

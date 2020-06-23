@@ -2,6 +2,9 @@
 
 @section('konten')
 <div class="container">
+    <div class="text-center">
+        <h1>Halo, {{ Auth::user()->name }}</h1>
+    </div>
         {{-- <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dashboard</div>
@@ -20,19 +23,101 @@
     @if ($exist > 0)
         {{-- <script>console.log({{ $dataPeserta }})</script> --}}
         @foreach ($dataPeserta as $item)
-            {{ $item->no_identitas }} <br>
-            {{ $item->jenis_kelamin }} <br>
+            {{ $item }} <br>
 
         @endforeach
+        <br><br>
+        @if ( ($dataPeserta[0]->racepack_flag) === 'N')
         
-        {{-- @if ($dataPeserta->racepack_flag === 'N')
-        <p>blm bisa ambil racepack bung</p>
-            
-        @elseif($dataPeserta->paid_flag === 'N')
-            <p>blm bayar bung</p>
-            
-        @endif --}}
-        <p>udah daftar bung</p>
+        @else
+
+        @endif
+        
+        @if ( ($dataPeserta[0]->paid_flag) === 'N' )
+            <div id="subJudul" class="bg-primary text-white text-center">
+                <h3>Pembayaran</h3>
+            </div>
+            <br>
+            <div class="text-center">
+                <h5><b>Silahkan lakukan pembayaran ke rek BCA 0399128403 An. Anggi Ananda</b></h5>
+                <br>
+                <form action="">
+                <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" onclick="pickFile()" id="imagetrf" placeholder="klik untuk pilih file">
+                                <input type="file" hidden="true" onchange="onFilePicked()" class="form-control-file" id="inputFile" name="imagetrf">
+                            </div>
+                            <button width="50" style="width:50%; margin:auto" type="submit" class="btn btn-primary btn-block rounded-pill">upload</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <br>
+        @elseif( ($dataPeserta[0]->paid_flag) === 'P' )
+            <div id="subJudul" class="bg-primary text-white text-center">
+                <h3>Pembayaran</h3>
+            </div>
+            <div class="text-center">
+                <b>Terimakasih telah melakukan pembayaran, status pendaftaran Anda sedang menuggu konfirmasi pembayaran. <br>
+                    Silahkan tunggu paling lama 1x24 jam untuk proses selanjutnya. <br> Jangan lupa jaga kesehatan ya! :)</b>
+            </div>
+            <br>
+        @else
+            <p>silahkan cetak tiket</p>
+            <p>dah bayar</p>
+        @endif
+        
+        <div id="subJudul" class="bg-primary text-white text-center">
+            <h3>Data Peserta</h3>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="no_identitas">{{ __('Nomor Identitas') }}</label>
+                    <input type="text" class="form-control" value="{{ $dataPeserta[0]->no_identitas }}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="jenis_kelamin">{{ __('Jenis Kelamin') }}</label>
+                    <input type="text" class="form-control" value="{{ $dataPeserta[0]->jenis_kelamin }}" readonly>
+                </div>
+                <div class="form-group">
+                    <label>{{ __('Golongan Darah') }}</label>
+                    <input type="text" class="form-control" value="{{ $dataPeserta[0]->gol_darah }}" readonly>
+                </div>
+                <div class="form-group">
+                    <label>{{ __('Alamat Lengkap') }}</label>
+                    <textarea class="form-control" readonly>{{ $dataPeserta[0]->alamat_peserta }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>{{ __('Obat Pribadi') }}</label>
+                    <textarea class="form-control" readonly>{{ $dataPeserta[0]->obat_pribadi }}</textarea>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>{{ __('Tempat Lahir') }}</label>
+                    <input type="text" class="form-control" value="{{ $dataPeserta[0]->tempat_lahir }}" readonly>
+                </div>
+                <div class="form-group">
+                    <label>{{ __('Tanggal Lahir') }}</label>
+                    <input type="text" class="form-control" value="{{ $dataPeserta[0]->tanggal_lahir }}" readonly>
+                </div>
+                <div class="form-group">
+                    <label>{{ __('Size Chart') }}</label>
+                    <input type="text" class="form-control" value="{{ $dataPeserta[0]->size_chart }}" readonly>
+                </div>
+                <div class="form-group">
+                    <label>{{ __('Riwayat Kesehatan') }}</label>
+                    <textarea class="form-control" readonly>{{ $dataPeserta[0]->riwayat_kesehatan }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>{{ __('Riwayat Kesehatan Keluarga') }}</label>
+                    <textarea class="form-control" readonly>{{ $dataPeserta[0]->riwayat_kesehatan_kel }}</textarea>
+                </div>
+            </div>
+        </div>
     @else
     <form action="{{ route('addPeserta') }}" method="POST">
         @csrf
@@ -193,5 +278,10 @@
     </form>
     @endif
     
+    <script>
+        function pilihFile(){
+            $('#inputFile').click();
+        }
+    </script>
 </div>
 @endsection
